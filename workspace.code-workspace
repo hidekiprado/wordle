@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "../../Desktop/GA-Projects/complete-javascript-course-master"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "wordle"
+  }
+}
