@@ -1,9 +1,42 @@
-body {
-  text-align: center;
+* {
+  resize: both;
 }
-/* h2 {
+body {
+  margin-bottom: 150px;
+  background-color: rgb(241, 252, 252);
+  color: rgb(29, 28, 28);
+}
+.congrats {
+  background-image: url('./images/congrats.png');
+  background-size: contain;
+}
+
+.headDiv {
+  border-bottom: 2px solid rgb(138, 137, 137);
+  font-size: 25px;
+  font-family: 'Fascinate', cursive;
+  display: flex;
+  justify-content: center;
+  padding-left: 170px;
+}
+h1,
+h2 {
+  margin: 0px;
+}
+
+h2 {
+  background-color: rgba(0, 255, 255, 0.462);
+  padding: 10px;
+  border-radius: 15px;
+  display: inline-block;
   visibility: hidden;
-} */
+  align-self: center;
+}
+
+.showH2 {
+  transition: 1s;
+  visibility: visible;
+}
 #game {
   display: flex;
   align-items: center;
@@ -11,10 +44,11 @@ body {
 }
 
 .letter-box {
-  border: 2px solid rgb(185, 182, 182);
+  border: 1px solid rgb(185, 182, 182);
   margin: 2px;
-  height: 5rem;
-  width: 5rem;
+  font-size: 30px;
+  height: 2em;
+  width: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,9 +56,29 @@ body {
 }
 
 .filled-box {
-  border: 2px solid black;
+  border: 2px solid rgb(96, 94, 94);
+  box-shadow: 5px 6px #c1c1c1;
 }
 
 .letter-row {
   display: flex;
+  padding-top: 3px;
+}
+.green {
+  transition: 0.5s;
+  border-radius: 20px;
+  background-color: rgb(45, 108, 45);
+  color: rgb(228, 228, 228);
+}
+.yellow {
+  transition: 0.5s;
+  border-radius: 20px;
+  background-color: rgb(185, 185, 34);
+  color: rgb(228, 228, 228);
+}
+.black {
+  transition: 0.5s;
+  border-radius: 20px;
+  background-color: rgb(29, 28, 28);
+  color: rgb(228, 228, 228);
 }
