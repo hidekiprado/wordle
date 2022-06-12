@@ -5765,6 +5765,7 @@ let counterRows = NumberofGuesses;
 let currentGuess = [];
 let nextLetter = 0;
 const h2El = document.querySelector('h2');
+const buttonsClicked = document.getElementsByClassName('key');
 let rightGuessString =
   wordsArray[Math.floor(Math.random() * wordsArray.length)];
 console.log(rightGuessString);
@@ -5805,7 +5806,14 @@ document.addEventListener('keyup', e => {
     insertLetter(keyPressed);
   }
 });
-
+//aAAAAAAAAAAAAAAAAAAAAAA
+for (const buttonClicked of buttonsClicked) {
+  buttonClicked.addEventListener('click', function () {
+    // console.log(buttonClicked.innerHTML);
+    insertLetter(buttonClicked.innerHTML);
+  });
+}
+//aAAAAAAAAAAAAAAAAAAAAAA
 function insertLetter(keyPressed) {
   if (nextLetter > 4) {
     return;
@@ -5884,3 +5892,4 @@ function checkGuess() {
     alert('This is not a valid word, please try it again');
   }
 }
+//Virtual keyboard

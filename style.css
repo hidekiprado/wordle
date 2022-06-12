@@ -17,7 +17,7 @@ body {
   font-family: 'Fascinate', cursive;
   display: flex;
   justify-content: center;
-  padding-left: 170px;
+  padding-left: 150px;
 }
 h1,
 h2 {
@@ -25,6 +25,7 @@ h2 {
 }
 
 h2 {
+  font-size: 20px;
   background-color: rgba(0, 255, 255, 0.462);
   padding: 10px;
   border-radius: 15px;
@@ -34,8 +35,8 @@ h2 {
 }
 
 .showH2 {
-  transition: 1s;
   visibility: visible;
+  transition: 2s;
 }
 #game {
   display: flex;
@@ -47,8 +48,8 @@ h2 {
   border: 1px solid rgb(185, 182, 182);
   margin: 2px;
   font-size: 30px;
-  height: 2em;
-  width: 3rem;
+  height: 50px;
+  width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,4 +82,36 @@ h2 {
   border-radius: 20px;
   background-color: rgb(29, 28, 28);
   color: rgb(228, 228, 228);
+}
+
+/* Virtual keyboard */
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+.row {
+  margin: 4px 4px;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-weight: 500;
+  border: none;
+  background: rgb(214, 214, 214);
+  font-size: 15px;
+  margin-left: 5px;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 20%;
+}
+button:active {
+  box-shadow: 1px 1px 4px #121212, 1px 1px 4px #2a292a;
 }
