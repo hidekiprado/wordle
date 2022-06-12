@@ -95,6 +95,16 @@ function checkGuess() {
   for (const letter of currentGuess) {
     guessString += letter;
   }
+  for (let i = 0; i < 5; i++) {
+    if (rightGuess[i] == currentGuess[i]) {
+      console.log(`letter on the position ${i} has to be green`);
+    } else if (rightGuess.includes(currentGuess[i])) {
+      console.log(`letter on the position ${i} has to be yellow`);
+    } else {
+      console.log(`letter on the position ${i} has to be black`);
+    }
+  }
+
   if (guessString == rightGuessString) {
     console.log('certo');
   } else {
