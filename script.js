@@ -5777,6 +5777,7 @@ console.log(rightGuessString);
 //Create rows and boxes.
 createGame();
 function createGame() {
+  const board = document.getElementById('game');
   for (let i = 0; i < numberOfGuesses; i++) {
     let row = document.createElement('div');
     row.className = 'letter-row';
@@ -5788,26 +5789,26 @@ function createGame() {
     }
     board.appendChild(row);
   }
-  //keyboard receiver
-  document.addEventListener('keyup', e => {
-    let keyPressed = String(e.key);
-
-    if (keyPressed === 'Enter') {
-      checkGuess();
-      return;
-    }
-    if (keyPressed === 'Backspace' && nextLetter !== 0) {
-      deleteLetter();
-      return;
-    }
-    let found = keyPressed.match(/[a-z]/gi);
-    if (!found || found.length > 1) {
-      return;
-    } else {
-      insertLetter(keyPressed);
-    }
-  });
 }
+//keyboard receiver
+document.addEventListener('keyup', e => {
+  let keyPressed = String(e.key);
+
+  if (keyPressed === 'Enter') {
+    checkGuess();
+    return;
+  }
+  if (keyPressed === 'Backspace' && nextLetter !== 0) {
+    deleteLetter();
+    return;
+  }
+  let found = keyPressed.match(/[a-z]/gi);
+  if (!found || found.length > 1) {
+    return;
+  } else {
+    insertLetter(keyPressed);
+  }
+});
 
 //virtual keyboard receiver
 for (const buttonClicked of buttonsClicked) {
