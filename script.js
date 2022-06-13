@@ -5757,12 +5757,17 @@ const wordsArray = [
   'biffy',
   'pupal',
 ];
+
+//------------------------------------------- Take on click from html
 //variables declared
+
 const numberOfGuesses = 6;
 let counterRows = numberOfGuesses;
 let currentGuess = [];
 let nextLetter = 0;
-const h2El = document.querySelector('h2');
+const buttonAskEnterEl = document.querySelector('.buttonAskEnter');
+const restartButtonEl = document.querySelector('.restartButton');
+
 //for the virtual keyboard
 const buttonsClicked = document.getElementsByClassName('key');
 //Random word
@@ -5772,8 +5777,6 @@ console.log(rightGuessString);
 //Create rows and boxes.
 createGame();
 function createGame() {
-  const board = document.getElementById('game');
-
   for (let i = 0; i < numberOfGuesses; i++) {
     let row = document.createElement('div');
     row.className = 'letter-row';
@@ -5785,26 +5788,26 @@ function createGame() {
     }
     board.appendChild(row);
   }
-}
-//keyboard receiver
-document.addEventListener('keyup', e => {
-  let keyPressed = String(e.key);
+  //keyboard receiver
+  document.addEventListener('keyup', e => {
+    let keyPressed = String(e.key);
 
-  if (keyPressed === 'Enter') {
-    checkGuess();
-    return;
-  }
-  if (keyPressed === 'Backspace' && nextLetter !== 0) {
-    deleteLetter();
-    return;
-  }
-  let found = keyPressed.match(/[a-z]/gi);
-  if (!found || found.length > 1) {
-    return;
-  } else {
-    insertLetter(keyPressed);
-  }
-});
+    if (keyPressed === 'Enter') {
+      checkGuess();
+      return;
+    }
+    if (keyPressed === 'Backspace' && nextLetter !== 0) {
+      deleteLetter();
+      return;
+    }
+    let found = keyPressed.match(/[a-z]/gi);
+    if (!found || found.length > 1) {
+      return;
+    } else {
+      insertLetter(keyPressed);
+    }
+  });
+}
 
 //virtual keyboard receiver
 for (const buttonClicked of buttonsClicked) {
@@ -5818,7 +5821,7 @@ function insertLetter(keyPressed) {
     return;
   } else if (nextLetter === 4) {
     console.log('Press Enter to confirm');
-    h2El.classList.add('showH2');
+    buttonAskEnterEl.classList.add('showH2');
   }
   keyPressed = keyPressed.toLowerCase();
   let row = document.getElementsByClassName('letter-row')[6 - counterRows];
@@ -5832,24 +5835,24 @@ function insertLetter(keyPressed) {
 function deleteLetter() {
   let row = document.getElementsByClassName('letter-row')[6 - counterRows];
   let box = row.children[nextLetter - 1];
+
   box.textContent = '';
   box.classList.remove('filled-box');
   currentGuess.pop();
   nextLetter -= 1;
-  h2El.classList.remove('showH2');
+  buttonAskEnterEl.classList.remove('showH2');
 }
 //Check Guess
 function checkGuess() {
   const row = document.getElementsByClassName('letter-row')[6 - counterRows];
   const rightGuess = Array.from(rightGuessString);
-
+  buttonAskEnterEl.classList.remove('showH2');
   let guessString = '';
   for (const letter of currentGuess) {
     guessString += letter;
   }
 
   if (wordsArray.includes(guessString)) {
-    h2El.classList.remove('showH2');
     //Color Handler
     for (let i = 0; i < 5; i++) {
       let box = row.children[i];
@@ -5880,16 +5883,18 @@ function checkGuess() {
         }
       }
     }
+
     //Won GAME
     if (guessString == rightGuessString) {
       console.log('certo');
       setTimeout(function () {
         alert('You guessed right! Congrats!');
-      }, 400);
+      }, 1000);
+
+      restartButtonEl.classList.add('showH2');
 
       document.body.classList.add('congrats');
       counterRows = 6; // might not be the best solution, check with someone -----------------------------------------
-      h2El.classList.remove('showH2');
 
       return; // might not be the best solution, check with someone -----------------------------------------
     } else {
@@ -5898,7 +5903,8 @@ function checkGuess() {
     currentGuess = [];
     nextLetter = 0;
     counterRows--;
-    //lost GAME
+
+    //Lost GAME
     if (counterRows === 0) {
       setTimeout(function () {
         alert(

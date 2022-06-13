@@ -14,7 +14,7 @@
   <body>
     <div class="headDiv">
       <h1>Wordle</h1>
-      <h2>Press Enter</h2>
+      <button onclick="checkGuess()" class="buttonAskEnter">Press Enter</button>
     </div>
 
     <div id="game"></div>
@@ -56,6 +56,9 @@
         <button onclick="deleteLetter()" class="del">Del</button>
         <button onclick="checkGuess()" class="enter">Enter</button>
       </div>
+    </div>
+    <div class="restartDiv">
+      <button class="restartButton">Restart</button>
     </div>
 
     <script src="script.js"></script>
