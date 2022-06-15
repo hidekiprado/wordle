@@ -5763,21 +5763,28 @@ const wordsArray = [
 
 const numberOfGuesses = 6;
 let counterRows = numberOfGuesses;
-let currentGuess = [];
+let currentGuess;
 let nextLetter = 0;
 const buttonAskEnterEl = document.querySelector('.buttonAskEnter');
 const restartButtonEl = document.querySelector('.restartButton');
-
-//for the virtual keyboard
-const buttonsClicked = document.getElementsByClassName('key');
-//Random word
+const board = document.getElementById('game');
 let rightGuessString =
   wordsArray[Math.floor(Math.random() * wordsArray.length)];
-console.log(rightGuessString);
+const buttonsClicked = document.getElementsByClassName('.key');
 //Create rows and boxes.
 createGame();
 function createGame() {
-  const board = document.getElementById('game');
+  //restart Button needs to clean GAME
+  counterRows = numberOfGuesses;
+  currentGuess = [];
+  nextLetter = 0;
+  board.innerHTML = '';
+  board.setAttribute('class', 'game');
+  restartButtonEl.setAttribute('class', 'restartButton');
+  rightGuessString = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+  console.log(rightGuessString);
+
+  //creating GAME
   for (let i = 0; i < numberOfGuesses; i++) {
     let row = document.createElement('div');
     row.className = 'letter-row';
