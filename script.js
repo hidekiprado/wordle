@@ -5758,13 +5758,14 @@ const wordsArray = [
   'pupal',
 ];
 
-//------------------------------------------- Take on click from html
 //variables declared
 
 const numberOfGuesses = 6;
 let counterRows = numberOfGuesses;
 currentGuess = [];
 let nextLetter = 0;
+const buttonDel = document.querySelector('.del');
+const buttonEnter = document.querySelector('.enter');
 const babyCrying = document.querySelector('.babyCrying');
 const buttonAskEnterEl = document.querySelector('.buttonAskEnter');
 const restartButtonEl = document.querySelector('.restartButton');
@@ -5776,18 +5777,7 @@ const buttonsClicked = document.querySelectorAll('.keyboard .row button');
 //Create rows and boxes.
 createGame();
 function createGame() {
-  //restart Button needs to clean GAME
-  counterRows = numberOfGuesses;
-  currentGuess = [];
-  nextLetter = 0;
-  board.innerHTML = '';
-  board.setAttribute('class', 'game');
-  restartButtonEl.setAttribute('class', 'restartButton');
-  document.body.classList.remove('congrats');
-  rightGuessString = wordsArray[Math.floor(Math.random() * wordsArray.length)];
   console.log(rightGuessString);
-  babyCrying.classList.remove('showBabyCrying');
-
   for (const buttonClicked of buttonsClicked) {
     buttonClicked.setAttribute('class', 'key');
   }
@@ -5804,33 +5794,7 @@ function createGame() {
     board.appendChild(row);
   }
 }
-//keyboard receiver
-document.addEventListener('keyup', e => {
-  let keyPressed = String(e.key);
 
-  if (keyPressed === 'Enter') {
-    checkGuess();
-    return;
-  }
-  if (keyPressed === 'Backspace' && nextLetter !== 0) {
-    checkGuess();
-    deleteLetter();
-    return;
-  }
-  let found = keyPressed.match(/[a-z]/gi);
-  if (!found || found.length > 1) {
-    return;
-  } else {
-    insertLetter(keyPressed);
-  }
-});
-
-//virtual keyboard receiver
-for (const buttonClicked of buttonsClicked) {
-  buttonClicked.addEventListener('click', function () {
-    insertLetter(buttonClicked.innerHTML);
-  });
-}
 // insert letters received into Boxes - Ordenated from counterRows and nextLetter
 function insertLetter(keyPressed) {
   if (nextLetter > 4) {
@@ -5931,9 +5895,53 @@ function checkGuess() {
     }
   } else {
     row.classList.toggle('wrongWord');
-    // if (!row.classList.contains('wrongWord')) {
-    //   row.classList.add('wrongWord');
-    // } else {
-    // }
   }
 }
+
+// EVENT LISTENERS
+//restart Button Clean GAME
+restartButtonEl.addEventListener('click', function () {
+  counterRows = numberOfGuesses;
+  currentGuess = [];
+  nextLetter = 0;
+  board.innerHTML = '';
+  board.setAttribute('class', 'game');
+  restartButtonEl.setAttribute('class', 'restartButton');
+  document.body.classList.remove('congrats');
+  rightGuessString = wordsArray[Math.floor(Math.random() * wordsArray.length)];
+  babyCrying.classList.remove('showBabyCrying');
+  createGame();
+});
+
+buttonAskEnterEl.addEventListener('click', checkGuess);
+
+//keyboard receiver
+document.addEventListener('keyup', e => {
+  let keyPressed = String(e.key);
+
+  if (keyPressed === 'Enter') {
+    checkGuess();
+    return;
+  }
+  if (keyPressed === 'Backspace' && nextLetter !== 0) {
+    checkGuess();
+    deleteLetter();
+    return;
+  }
+  let found = keyPressed.match(/[a-z]/gi);
+  if (!found || found.length > 1) {
+    return;
+  } else {
+    insertLetter(keyPressed);
+  }
+});
+
+//virtual keyboard receiver
+for (const buttonClicked of buttonsClicked) {
+  if (buttonClicked.innerHTML !== 'Del' && buttonClicked.innerHTML !== 'Enter')
+    buttonClicked.addEventListener('click', function () {
+      insertLetter(buttonClicked.innerHTML);
+    });
+}
+buttonDel.addEventListener('click', deleteLetter);
+buttonEnter.addEventListener('click', checkGuess);
