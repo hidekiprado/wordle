@@ -5759,10 +5759,9 @@ const wordsArray = [
 ];
 
 //variables declared
-
 const numberOfGuesses = 6;
 let counterRows = numberOfGuesses;
-currentGuess = [];
+let currentGuess = [];
 let nextLetter = 0;
 const buttonDel = document.querySelector('.del');
 const buttonEnter = document.querySelector('.enter');
@@ -5774,7 +5773,7 @@ let rightGuessString =
   wordsArray[Math.floor(Math.random() * wordsArray.length)];
 const buttonsClicked = document.querySelectorAll('.keyboard .row button');
 
-//Create rows and boxes.
+//Create rows and boxes. GAME
 createGame();
 function createGame() {
   console.log(rightGuessString);
@@ -5794,7 +5793,6 @@ function createGame() {
     board.appendChild(row);
   }
 }
-
 // insert letters received into Boxes - Ordenated from counterRows and nextLetter
 function insertLetter(keyPressed) {
   if (nextLetter > 4) {
@@ -5850,15 +5848,18 @@ function checkGuess() {
       }
       //Vistual keyboard color handler
       for (const buttonClicked of buttonsClicked) {
+        let currentGuessLetter = currentGuess[i];
+        let rightGuessLetter = rightGuess[i];
+
         if (
-          currentGuess[i] == rightGuess[i] &&
-          currentGuess[i] == buttonClicked.innerHTML
+          currentGuessLetter == rightGuessLetter &&
+          currentGuessLetter == buttonClicked.innerHTML
         ) {
           buttonClicked.setAttribute('class', 'green');
         } else if (
-          rightGuess.includes(currentGuess[i]) &&
+          rightGuess.includes(currentGuessLetter) &&
           !buttonClicked.classList.contains('green') &&
-          buttonClicked.innerHTML == currentGuess[i]
+          buttonClicked.innerHTML == currentGuessLetter
         ) {
           buttonClicked.classList.add('yellow');
         }
@@ -5868,12 +5869,11 @@ function checkGuess() {
     //Won GAME
     if (guessString == rightGuessString) {
       setTimeout(function () {
-        alert('You guessed right! Congrats!');
+        alert('You guessed right! Congratulations!');
       }, 1000);
       restartButtonEl.classList.add('showH2');
       document.body.classList.add('congrats');
       counterRows = 6; // might not be the best solution, check with someone -----------------------------------------
-
       return; // might not be the best solution, check with someone -----------------------------------------
     }
     currentGuess = [];
