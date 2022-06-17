@@ -31,6 +31,18 @@ body img {
 }
 .headDiv h1 {
   margin: 0px 0px 0px 5px;
+  padding: 4px;
+}
+.headDiv h1:hover {
+  border-radius: 30px;
+  opacity: 0.9;
+  background: rgb(19, 187, 19);
+  background: linear-gradient(
+    90deg,
+    rgba(19, 187, 19, 1) 0%,
+    rgba(239, 239, 8, 1) 50%,
+    rgba(0, 255, 255, 1) 100%
+  );
 }
 .buttonAskEnter,
 .restartButton {
@@ -83,6 +95,9 @@ body img {
 .letter-row {
   display: flex;
   padding-top: 3px;
+}
+.letter-row:hover {
+  opacity: 0.9;
 }
 
 /* Virtual keyboard */
@@ -151,6 +166,7 @@ button {
 .green {
   border: 2px solid rgb(96, 94, 94);
   border-radius: 20px;
+  color: rgb(29, 28, 28);
   background-color: rgb(19, 187, 19);
   transition: 0.5s;
 }

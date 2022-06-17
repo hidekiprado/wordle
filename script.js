@@ -5763,15 +5763,16 @@ const numberOfGuesses = 6;
 let counterRows = numberOfGuesses;
 let currentGuess = [];
 let nextLetter = 0;
-const buttonDel = document.querySelector('.del');
-const buttonEnter = document.querySelector('.enter');
-const babyCrying = document.querySelector('.babyCrying');
-const buttonAskEnterEl = document.querySelector('.buttonAskEnter');
-const restartButtonEl = document.querySelector('.restartButton');
-const board = document.getElementById('game');
+const buttonDel = document.querySelector('.del'); // virtual keyboard Del button
+const buttonEnter = document.querySelector('.enter'); // virtual keyboard Enter button
+const babyCrying = document.querySelector('.babyCrying'); // babyCrying img appeard when you LOST
+const buttonAskEnterEl = document.querySelector('.buttonAskEnter'); //button askEnter appears when on the last colunm is set as 'filled-box'
+const restartButtonEl = document.querySelector('.restartButton'); //button restart appears when you WIN or LOST
+const board = document.getElementById('game'); //DIV Game is created on the class CreateGame()
+const buttonsClicked = document.querySelectorAll('.keyboard .row button'); //virtual keyboard buttons
+
 let rightGuessString =
-  wordsArray[Math.floor(Math.random() * wordsArray.length)];
-const buttonsClicked = document.querySelectorAll('.keyboard .row button');
+  wordsArray[Math.floor(Math.random() * wordsArray.length)]; // Random word from wordsArray
 
 //Create rows and boxes. GAME
 createGame();
@@ -5820,7 +5821,7 @@ function deleteLetter() {
   buttonAskEnterEl.classList.remove('showH2');
   row.classList.remove('wrongWord');
 }
-//Check Guess
+//Check current Guess
 function checkGuess() {
   //variables declared
   const row = document.getElementsByClassName('letter-row')[6 - counterRows];
@@ -5912,7 +5913,7 @@ restartButtonEl.addEventListener('click', function () {
   babyCrying.classList.remove('showBabyCrying');
   createGame();
 });
-
+//askEnter Button executes checkGuess()
 buttonAskEnterEl.addEventListener('click', checkGuess);
 
 //keyboard receiver
@@ -5943,5 +5944,7 @@ for (const buttonClicked of buttonsClicked) {
       insertLetter(buttonClicked.innerHTML);
     });
 }
+//virtual keyboard, button Del
 buttonDel.addEventListener('click', deleteLetter);
+//virtual keyboard, button Del
 buttonEnter.addEventListener('click', checkGuess);
