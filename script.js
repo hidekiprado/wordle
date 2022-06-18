@@ -5763,6 +5763,7 @@ const numberOfGuesses = 6;
 let counterRows = numberOfGuesses;
 let currentGuess = [];
 let nextLetter = 0;
+//DOM variables
 const buttonDel = document.querySelector('.del'); // virtual keyboard Del button
 const buttonEnter = document.querySelector('.enter'); // virtual keyboard Enter button
 const babyCrying = document.querySelector('.babyCrying'); // babyCrying img appeard when you LOST
@@ -5828,7 +5829,8 @@ function checkGuess() {
   const rightGuess = Array.from(rightGuessString);
   buttonAskEnterEl.classList.remove('showH2');
   let guessString = '';
-  //Current Guess into String to be comparable
+
+  //Current Guess into String to be comparable -- check JOIN function
   for (const letter of currentGuess) {
     guessString += letter;
   }
@@ -5836,7 +5838,7 @@ function checkGuess() {
   if (wordsArray.includes(guessString)) {
     for (let i = 0; i < 5; i++) {
       let box = row.children[i];
-      //Fisical keyboard color handler
+      //Keyboard color handler
       if (currentGuess[i] == rightGuess[i]) {
         //GAME box Green
         box.classList.add('green');
@@ -5847,7 +5849,7 @@ function checkGuess() {
       } else {
         box.classList.add('black');
       }
-      //Vistual keyboard color handler
+      //Virtual keyboard color handler
       for (const buttonClicked of buttonsClicked) {
         let currentGuessLetter = currentGuess[i];
         let rightGuessLetter = rightGuess[i];
@@ -5925,7 +5927,6 @@ document.addEventListener('keyup', e => {
     return;
   }
   if (keyPressed === 'Backspace' && nextLetter !== 0) {
-    checkGuess();
     deleteLetter();
     return;
   }
