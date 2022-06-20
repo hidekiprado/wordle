@@ -5809,6 +5809,7 @@ function insertLetter(keyPressed) {
   box.classList.add('filled-box');
   currentGuess.push(keyPressed);
   nextLetter++;
+  return;
 }
 //Delete Letter
 function deleteLetter() {
@@ -5828,12 +5829,9 @@ function checkGuess() {
   const row = document.getElementsByClassName('letter-row')[6 - counterRows];
   const rightGuess = Array.from(rightGuessString);
   buttonAskEnterEl.classList.remove('showH2');
-  let guessString = '';
+  let guessString = currentGuess.join('');
 
   //Current Guess into String to be comparable -- check JOIN function
-  for (const letter of currentGuess) {
-    guessString += letter;
-  }
   //Color Handler
   if (wordsArray.includes(guessString)) {
     for (let i = 0; i < 5; i++) {
@@ -5876,12 +5874,13 @@ function checkGuess() {
       }, 1000);
       restartButtonEl.classList.add('showH2');
       document.body.classList.add('congrats');
-      counterRows = 6; // might not be the best solution, check with someone -----------------------------------------
+      counterRows = 7; // might not be the best solution, check with someone -----------------------------------------
       return; // might not be the best solution, check with someone -----------------------------------------
+    } else {
+      currentGuess = [];
+      nextLetter = 0;
+      counterRows--;
     }
-    currentGuess = [];
-    nextLetter = 0;
-    counterRows--;
 
     //Lost GAME
     if (counterRows === 0) {
@@ -5892,9 +5891,9 @@ function checkGuess() {
         );
       }, 2000);
       restartButtonEl.classList.add('showH2');
-      counterRows = 6;
-
       babyCrying.classList.add('showBabyCrying');
+      counterRows = 7;
+      return;
     }
   } else {
     row.classList.toggle('wrongWord');

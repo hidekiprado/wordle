@@ -28,13 +28,12 @@ body img {
   font-size: 25px;
 }
 .headDiv h1 {
-  margin: 0;
-  padding: 0px 6px;
+  margin: 0 0 0 5px;
+  padding: 0 4px;
 }
 .headDiv h1:hover {
-  border-radius: 30px;
+  border-radius: 20px;
   opacity: 0.9;
-  background: rgb(19, 187, 19);
   background: linear-gradient(
     90deg,
     rgba(19, 187, 19, 1) 0%,
@@ -55,6 +54,7 @@ body img {
   background-color: rgb(237, 232, 227);
   cursor: pointer;
   visibility: hidden;
+  transition: 1s;
 }
 .restartDiv {
   grid-column-start: 3;
@@ -137,10 +137,18 @@ button {
 /* CLASSES SWITCH */
 /* show buttons Restart and Press Enter*/
 .showH2 {
-  transition: 0.8s;
   color: rgb(29, 28, 28);
   background-color: rgba(0, 255, 255, 0.462);
   visibility: visible;
+  transition: 1s;
+}
+.showH2:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(19, 187, 19, 1) 0%,
+    rgba(239, 239, 8, 1) 50%,
+    rgba(0, 255, 255, 1) 100%
+  );
 }
 /* wrong word - shakes */
 .wrongWord {
