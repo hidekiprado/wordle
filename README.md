@@ -55,11 +55,3 @@ babyCrying.png , congrats.png.
 ###### -FlexBox.
 
 ###### -Grid.
-
-#### CSS
-
-###### -Orientation and positioning.
-
-###### -FlexBox.
-
-###### -Grid.
