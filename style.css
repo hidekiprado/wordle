@@ -8,7 +8,6 @@ body {
   margin-bottom: 150px;
   color: rgb(29, 28, 28);
   background-color: rgb(237, 232, 227);
-  opacity: 0.9;
   font-family: 'Fascinate', cursive;
 }
 /* You lost img */
@@ -32,14 +31,8 @@ body img {
   padding: 0 4px;
 }
 .headDiv h1:hover {
-  border-radius: 20px;
-  opacity: 0.9;
-  background: linear-gradient(
-    90deg,
-    rgba(19, 187, 19, 1) 0%,
-    rgba(239, 239, 8, 1) 50%,
-    rgba(0, 255, 255, 1) 100%
-  );
+  transition: 0.4s;
+  text-shadow: 4px 4px rgba(108, 108, 108, 0.294);
 }
 .buttonAskEnter,
 .restartButton {
@@ -131,6 +124,8 @@ button {
   box-shadow: 1px 1px 4px #121212, 1px 1px 4px #2a292a;
 }
 .row button:hover {
+  transition: 0.5s;
+  transform: scale(1.13);
   opacity: 0.8;
 }
 
@@ -140,9 +135,12 @@ button {
   color: rgb(29, 28, 28);
   background-color: rgba(0, 255, 255, 0.462);
   visibility: visible;
-  transition: 1s;
 }
 .showH2:hover {
+  transition: 1s;
+
+  transform: scale(1.1);
+  box-shadow: 1px 1px 4px #121212;
   background: linear-gradient(
     90deg,
     rgba(19, 187, 19, 1) 0%,
