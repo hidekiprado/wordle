@@ -4,65 +4,65 @@
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap"
-      rel="stylesheet"
-    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />  
     <title>Wordle</title>
   </head>
   <body>
-    <img class="babyCrying" src="./images/babyCrying.png" alt="BabyCrying" />
-    <div class="headDiv">
-      <h1>Wordle</h1>
-      <!-- Button askEnter appears when last colunm is set as 'filled-box' -->
-      <button class="buttonAskEnter">Press Enter</button>
+    <div class="divMain">
+      <img class="babyCrying" src="./images/babyCrying.png" alt="BabyCrying" />
+      <div class="headDiv">
+        <h1>Wordle</h1>
+        <div class="buttonsHead">
+          <button class="buttonAskEnter">Press Enter</button>
+          <button class="restartButton">Restart</button>     
+        </div>           
+      </div>
+      
+      <!-- Frame for the game is created inside of this DIV-game -->
+      <div id="game"></div>
+      <!-- virtual keyboard -->
+      <div class="keyboard">
+        <div class="row" id="row-0">
+          <button>q</button>
+          <button>w</button>
+          <button>e</button>
+          <button>r</button>
+          <button>t</button>
+          <button>y</button>
+          <button>u</button>
+          <button>i</button>
+          <button>o</button>
+          <button>p</button>
+        </div>
+        <div class="row" id="row-1">
+          <button>a</button>
+          <button>s</button>
+          <button>d</button>
+          <button>f</button>
+          <button>g</button>
+          <button>h</button>
+          <button>j</button>
+          <button>k</button>
+          <button>l</button>
+        </div>
+        <div class="row" id="row-2">
+          <button>z</button>
+          <button>x</button>
+          <button>c</button>
+          <button>v</button>
+          <button>b</button>
+          <button>n</button>
+          <button>m</button>
+        </div>
+        <div class="row" id="row-3">
+          <button class="del">Del</button>
+          <button class="enter">Enter</button>
+        </div>
+      </div>
+      <!-- restart button apperars when user WIN or LOST -->
+      
     </div>
-    <!-- Frame for the game is created inside of this DIV-game -->
-    <div id="game"></div>
-    <!-- virtual keyboard -->
-    <div class="keyboard">
-      <div class="row" id="row-0">
-        <button>q</button>
-        <button>w</button>
-        <button>e</button>
-        <button>r</button>
-        <button>t</button>
-        <button>y</button>
-        <button>u</button>
-        <button>i</button>
-        <button>o</button>
-        <button>p</button>
-      </div>
-      <div class="row" id="row-1">
-        <button>a</button>
-        <button>s</button>
-        <button>d</button>
-        <button>f</button>
-        <button>g</button>
-        <button>h</button>
-        <button>j</button>
-        <button>k</button>
-        <button>l</button>
-      </div>
-      <div class="row" id="row-2">
-        <button>z</button>
-        <button>x</button>
-        <button>c</button>
-        <button>v</button>
-        <button>b</button>
-        <button>n</button>
-        <button>m</button>
-      </div>
-      <div class="row" id="row-3">
-        <button class="del">Del</button>
-        <button class="enter">Enter</button>
-      </div>
-    </div>
-    <!-- restart button apperars when user WIN or LOST -->
-    <div class="restartDiv">
-      <button class="restartButton">Restart</button>
-    </div>
+    
 
     <script src="script.js"></script>
   </body>

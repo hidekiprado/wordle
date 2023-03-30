@@ -1,43 +1,40 @@
-* {
-  resize: both;
-}
-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  text-align: center;
-  margin-bottom: 150px;
-  color: rgb(29, 28, 28);
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+body{
   background-color: rgb(237, 232, 227);
-  font-family: 'Fascinate', cursive;
+}
+.divMain {
+  display: flex;  
+  flex-direction: column;
+  color: rgb(29, 28, 28);    
 }
 /* You lost img */
 body img {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  z-index: 5;
   max-block-size: 0px;
+  position: absolute;
   transition: 2s;
 }
 .headDiv {
-  grid-column-start: 2;
-  grid-column-end: 4;
   display: flex;
+  justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 25px;    
 }
-.headDiv h1 {
-  margin: 0 0 0 5px;
-  padding: 0 4px;
+.headDiv h1 { 
+  margin: 0.4rem;   
+  font-family: 'Fascinate', cursive;
 }
 .headDiv h1:hover {
   transition: 0.4s;
   text-shadow: 4px 4px rgba(108, 108, 108, 0.294);
 }
+.buttonsHead{
+  width: 17%;
+}
 .buttonAskEnter,
 .restartButton {
-  height: 50px;
-  margin-left: 10px;
+  height: fit-content;
+  margin-left: 1000px;
   padding: 10px;
   font-size: 20px;
   font-family: 'Fascinate', cursive;
@@ -46,27 +43,15 @@ body img {
   color: rgb(237, 232, 227);
   background-color: rgb(237, 232, 227);
   cursor: pointer;
-  visibility: hidden;
+  display: none;  
   transition: 1s;
 }
-.restartDiv {
-  grid-column-start: 3;
-  grid-row-start: 2;
-  display: flex;
-  align-content: flex-start;
-  padding-top: 10px;
-  font-family: 'Fascinate', cursive;
-}
-
 #game {
-  grid-column-start: 2;
-  grid-column-end: 3;
   display: flex;
   align-items: center;
   flex-direction: column;
   border-top: 2px solid rgb(138, 137, 137);
 }
-
 .letter-box {
   margin: 2px;
   display: flex;
@@ -134,11 +119,12 @@ button {
 .showH2 {
   color: rgb(29, 28, 28);
   background-color: rgba(0, 255, 255, 0.462);
-  visibility: visible;
+  display: flex;
+  margin-left: 10px;
+  
 }
 .showH2:hover {
   transition: 1s;
-
   transform: scale(1.1);
   box-shadow: 1px 1px 4px #121212;
   background: linear-gradient(
