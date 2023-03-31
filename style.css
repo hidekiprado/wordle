@@ -29,7 +29,7 @@ body img {
   text-shadow: 4px 4px rgba(108, 108, 108, 0.294);
 }
 .buttonsHead{
-  width: 17%;
+  width: 8%;
 }
 .buttonAskEnter,
 .restartButton {
@@ -65,6 +65,7 @@ body img {
   text-transform: uppercase;
 }
 .filled-box {
+  margin: 1px;
   box-shadow: 5px 6px #c1c1c1;
   border: 2px solid rgb(96, 94, 94);
 }
